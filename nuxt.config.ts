@@ -2,9 +2,15 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+  app:
+    {baseURL:'',},
+  css: ['vuetify/styles'],
+  build: {
+    transpile: ['vuetify'],
+  },
+  
    extends: [
-    '../front-core',
-    '../front-modules/auth'
+    './front-app'
   ],
 })
 
