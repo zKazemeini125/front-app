@@ -3,13 +3,19 @@
 
 <template>
     <v-form>
-        <v-container class>
+        <!--! میشه با استفاده از breakpoint ها استایل های مختلف به یک تگ ویوتی داد؟؟ -->
+        <!--h max-width -->
+        <v-container max-width="500px">
             <v-row>
-                <v-col>
-                    <v-text-field label="Label" variant="outlined" density="compact"/>
+                <v-col cols="12">
+                    <!--! راهی وجود داره که کامپونتت های ویوتی رو overwrite کرد؟-->
+                    <!--h hide-details -->
+                    <v-text-field label="t('general.username')" variant="outlined" density="compact" hide-details/>
+                </v-col>
+                <v-col cols="12">
+                    <v-text-field label="t('general.password')" variant="outlined" density="compact" hide-details/>
                 </v-col>
             </v-row>
-            <v-text-field label="Label" variant="outlined" density="compact"/>
         </v-container>
     </v-form>
 </template>
