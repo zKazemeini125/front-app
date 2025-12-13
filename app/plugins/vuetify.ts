@@ -1,6 +1,6 @@
 // import this after install `@mdi/font` package
 import "@mdi/font/css/materialdesignicons.css";
-
+import { VIconBtn } from 'vuetify/labs/VIconBtn'
 import "vuetify/styles";
 import { createVuetify } from "vuetify";
 
@@ -12,6 +12,12 @@ export default defineNuxtPlugin((app) => {
         density: "compact",
         hideDetails: "auto",
       },
+    },
+    theme: {
+      defaultTheme: "light", // 'light' | 'dark' | 'system'
+    },
+    components: {
+      VIconBtn,
     },
   });
   app.vueApp.use(vuetify);
