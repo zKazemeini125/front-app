@@ -1,24 +1,13 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
+const router = useRouter();
 
 onMounted(() => {
-  console.log("qwertyuiop");
+  router.push("./products/create");
 });
 </script>
 
 <template>
-  <v-container>
-    <v-row>
-      <v-col>
-        <v-text-field label="Username" v-model=""></v-text-field>
-      </v-col>
-    </v-row>
-  </v-container>
+  
 </template>
 
-<style scoped>
-div {
-  color: blue;
-  font-size: 20px;
-}
-</style>
+<style scoped></style>
