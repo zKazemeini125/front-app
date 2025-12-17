@@ -2,7 +2,7 @@
 const router = useRouter();
 
 onMounted(() => {
-  router.push("./products/create");
+  router.push("./products");
 });
 </script>
 
