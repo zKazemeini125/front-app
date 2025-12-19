@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const router = useRouter();
+const f=ref(true)
 </script>
 
 <template>
@@ -30,9 +31,7 @@ const router = useRouter();
       <slot></slot>
     </v-main>
     </v-app>
-    
   </v-layout>
-  <c> </c>
 </template>
 
 <style scoped></style>
