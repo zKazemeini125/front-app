@@ -9,6 +9,7 @@ interface Header {
 }
 interface tableProps {
   url?: string;
+  action?: [{ name: string; onClick: "$emit(click)" }];
   header: Header[];
   items: any[];
   search: string;
@@ -63,11 +64,27 @@ onMounted(async () => {
             {{ item.description }}
           </span>
         </template>
-        <template #item.title="{item}">
+        <template #item.title="{ item }">
           <span class="elipsis">{{ item.title }}</span>
         </template>
-        </v-data-table></v-row
-    >
+        <thead>
+          <tr v-if="action !== null">
+            <th>actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-if="action !== null">
+            <td>
+              <div class="d-flex flex-row justify-centr align-center">
+                <v-btn
+                  v-if="props.action.name === 'edit'"
+                  icon="mdi-pencil"
+                ></v-btn>
+              </div>
+            </td>
+          </tr>
+        </tbody> </v-data-table
+    ></v-row>
   </div>
 </template>
 

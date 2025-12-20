@@ -6,7 +6,7 @@ const tbHeaders = [
   {
     key: "title",
     title: "title",
-    nowrap:true,
+    nowrap: true,
   },
   {
     key: "price",
@@ -25,9 +25,17 @@ const tbHeaders = [
     title: "image",
   },
 ];
+const actions = [
+  {
+    name: "edit",
+    onclick: () => {
+      console.log("edit clicked");
+    },
+  },
+];
 </script>
 <template>
   <ui-form save-text="New" :visible-list="false" :visible-reset="false">
-    <ui-table :url="baseUrl" :header="tbHeaders"></ui-table>
+    <ui-table :url="baseUrl" :header="tbHeaders" :action="actions"></ui-table>
   </ui-form>
 </template>
