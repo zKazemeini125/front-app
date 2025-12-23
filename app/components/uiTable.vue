@@ -7,17 +7,24 @@ interface Header {
   sortable?: boolean;
   type?: string;
 }
+interface Action {
+  icon: string;
+  title: string;
+  click?: (item: unknown, index: number) => void;
+}
 interface tableProps {
   url?: string;
-  action?: [{ name: string; onClick: "$emit(click)" }];
+  action?: Action[];
   header: Header[];
   items: any[];
-  search: string;
+  search?: string;
 }
 const urlItems = ref<any>([]);
 const props = defineProps<tableProps>();
 const selected = ref<number[]>();
-const expandedRow = ref();
+const actionsHeaders = computed<Header[]>(() => [
+  { key: "actions", title: "actions" },
+]);
 
 onMounted(async () => {
   if (props.url !== undefined) {
@@ -29,20 +36,14 @@ onMounted(async () => {
 
 <template>
   <div>
-    <v-row class="mt-5">
-      <v-col md="4" class="d-flex align-center">
-        <v-btn class="rounded-lg mr-3" size="34" icon="mdi-refresh"></v-btn>
-        <v-text-field class="" density="compact">
-          <template #append-inner>
-            <v-icon icon="mdi-magnify" @click="$emit('search')"></v-icon>
-          </template>
-        </v-text-field>
-      </v-col>
-    </v-row>
     <v-row>
       <v-data-table
         :items="props.url ? urlItems : props.items"
-        :headers="props.header"
+        :headers="
+          !!props.action && !!props.header
+            ? props.header.concat(actionsHeaders)
+            : props.header
+        "
         item-value="id"
         show-select
         v-model="selected"
@@ -50,11 +51,11 @@ onMounted(async () => {
         :search="props.search"
       >
         <template #item.image="{ item }">
-          <v-image
+          <v-img
             elevation="4"
             :src="item.image"
-            width="30"
-            hight="30"
+            width="50"
+            height="50"
             cover
             class="rounded"
           />
@@ -67,30 +68,28 @@ onMounted(async () => {
         <template #item.title="{ item }">
           <span class="elipsis">{{ item.title }}</span>
         </template>
-        <thead>
-          <tr v-if="action !== null">
-            <th>actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-if="action !== null">
-            <td>
-              <div class="d-flex flex-row justify-centr align-center">
-                <v-btn
-                  v-if="props.action.name === 'edit'"
-                  icon="mdi-pencil"
-                ></v-btn>
-              </div>
-            </td>
-          </tr>
-        </tbody> </v-data-table
+        <template #item.actions="{item}">
+          <div class="d-flex flex-row justify-centr align-center">
+            <v-icon
+              v-for="(action, index) in props.action"
+              :key="index"
+              :color="action.color"
+              :title="action.title"
+              class="cursor-pointer"
+              :disabled="action.disabled == true"
+              :icon="'mdi-' + action.icon"
+              size="small"
+              @click="action.click?.(item, index)"
+            />
+          </div>
+        </template> </v-data-table
     ></v-row>
   </div>
 </template>
 
 <style>
 .elipsis {
-  max-width: 200px;
+  max-width: 100px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: inline-block;
