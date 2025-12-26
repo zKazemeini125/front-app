@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type cardTableContainerVue from "~/components/cardTableContainer.vue";
-
+  const app=useApp()
+const router = useRouter();
 const baseUrl = "https://fakestoreapi.com/products";
 const tbHeaders = [
   { key: "title", title: "title", nowrap: true },
@@ -13,14 +13,30 @@ const actions = [
   {
     icon: "delete",
     title: "delete",
+    color: "#ff1122",
     click: (item) => {
-      console.log("this action call from prodocts"+item.id);
+      console.log("delete");
+    },
+  },
+  {
+    icon: "pen",
+    title: "edit",
+    color: "info",
+    click: (item) => {
+      gotoForm(item)
     },
   },
 ];
+const gotoForm=(item:any)=>{  
+  if(!Number(item?.id))
+    router.push({name:'products-craete'}) 
+  else
+  router.push({name:'products-id', params:{id: item.id}})
+
+}
 </script>
 <template>
-  <ui-form save-text="New" :visible-list="false" :visible-reset="false">
+  <ui-form :visible-list="false" :visible-delete="false" :visible-save="false" @new="gotoForm" >
     <ui-table :url="baseUrl" :header="tbHeaders" :action="actions"> </ui-table>
   </ui-form>
 </template>

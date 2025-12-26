@@ -10,6 +10,7 @@ interface Header {
 interface Action {
   icon: string;
   title: string;
+  color:string;
   click?: (item: unknown, index: number) => void;
 }
 interface tableProps {
@@ -75,8 +76,7 @@ onMounted(async () => {
               :key="index"
               :color="action.color"
               :title="action.title"
-              class="cursor-pointer"
-              :disabled="action.disabled == true"
+              class="cursor-pointer ma-1"
               :icon="'mdi-' + action.icon"
               size="small"
               @click="action.click?.(item, index)"

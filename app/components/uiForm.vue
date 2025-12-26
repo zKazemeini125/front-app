@@ -5,6 +5,7 @@ const props = withDefaults(
     visibleReset?: boolean;
     visibleList?: boolean;
     visibleDelete?: boolean;
+    visibleNew?:boolean;
     saveText?: string;
   }>(),
   {
@@ -12,7 +13,7 @@ const props = withDefaults(
     visibleReset: true,
     visibleList: true,
     visibleDelete: true,
-    saveText: "Save",
+    visibleNew:true,
   }
 );
 </script>
@@ -23,18 +24,18 @@ const props = withDefaults(
         <div class="d-flex flex-row justify-start align-start my-3">
           <v-btn
             v-if="visibleSave"
-            class="rounded-md mr-1 text-none btn-w"
+            class="rounded-lg mr-1 text-none icon-w"
+            icon="mdi-content-save"
             variant="outlined"
             @click="$emit('save')"
-            >{{ saveText }}</v-btn
-          >
+          ></v-btn>
           <v-btn
             v-if="visibleReset"
-            class="rounded-md mr-1 text-none btn-w"
+            class="rounded-lg mr-1 text-none icon-w"
+            icon="mdi-refresh"
             variant="outlined"
             @click="$emit('reset')"
-            >Reset</v-btn
-          >
+          ></v-btn>
           <v-btn
             v-if="visibleList"
             class="rounded-lg mr-1 icon-w"
@@ -48,6 +49,13 @@ const props = withDefaults(
             class="rounded-lg mr-1 icon-w"
             variant="outlined"
             @click="$emit('delete')"
+          ></v-btn>
+          <v-btn
+            v-if="visibleNew"
+            icon="mdi-plus-thick"
+            class="rounded-lg mr-1 icon-w"
+            variant="outlined"
+            @click="$emit('new')"
           ></v-btn>
         </div>
         <slot></slot>
