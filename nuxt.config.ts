@@ -1,17 +1,22 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
+import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
+  compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
 
   build: {
-    transpile: ['vuetify'],
+    transpile: ["vuetify"],
+  },
+  app: {
+    head: {
+      link: [
+        { rel: "icon", type: "image/x-icon", href: " ~/asset/favicon.ico" },
+      ],
+    },
   },
 
   vite: {
-    plugins: [
-      vuetify({ autoImport: true }),
-    ],
+    plugins: [vuetify({ autoImport: true })],
     vue: {
       template: {
         transformAssetUrls,
@@ -19,5 +24,5 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['nuxt-auth-utils'],
-})
+  modules: ["nuxt-auth-utils"],
+});

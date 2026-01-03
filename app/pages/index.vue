@@ -2,7 +2,7 @@
 const router = useRouter();
 
 onMounted(() => {
-  router.push("./products");
+  router.push("./auth/signIn");
 });
 </script>
 

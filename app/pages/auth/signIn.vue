@@ -15,7 +15,7 @@ onMounted(() => {});
     <template #title>
       <div class="d-flex flex-column justify-center align-center">
         <v-sheet
-          class="elevation-3 mt-7 d-flex flex-row justify-center align-center"
+          class="elevation-0 mt-7 d-flex flex-row justify-center align-center"
           rounded="rounded"
           width="40"
           height="40"
@@ -26,7 +26,7 @@ onMounted(() => {});
         <span class="text-body-1">Good choices from a good store</span>
       </div>
     </template>
-    <template v-slot:text>
+    <template v-slot:text> <!--!template #text-->
       <v-row class="mx-5 mt-4">
         <v-col cols="12">
           <v-text-field
@@ -40,7 +40,12 @@ onMounted(() => {});
           <v-text-field
             label="Password"
             prepend-inner-icon="mdi-lock"
-          ></v-text-field>
+
+          >
+        <template #append-inner>
+          <v-icon v-model="showPassword"
+          :icon="showPassword:">mdi-eye</v-icon>
+        </template></v-text-field>
           <div class="d-flex flex-row justify-end">
             <a class="text-body-2" @click="gotoRegister"
               >I don't have an account.</a
