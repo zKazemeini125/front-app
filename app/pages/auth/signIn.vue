@@ -1,11 +1,26 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
+import "~/data";
+import { loginUser, type CreateUserDto } from "~/data";
 definePageMeta({
   layout: "auth",
 });
 const router = useRouter();
 const gotoRegister = () => {
   router.push({ name: "auth-register" });
+};
+const showPassword = ref(false);
+const changePasswordState = () => {
+  showPassword.value = !showPassword.value;
+};
+const form = reactive<CreateUserDto>({ username: "", password: "" });
+const submit = () => {
+  const userLogedin = loginUser(form.username, form.password);
+  console.log('qqqqqqq');
+  
+  if (userLogedin) {
+    router.push({ name: "products" });
+  }
 };
 onMounted(() => {});
 </script>
@@ -26,13 +41,15 @@ onMounted(() => {});
         <span class="text-body-1">Good choices from a good store</span>
       </div>
     </template>
-    <template v-slot:text> <!--!template #text-->
+    <template v-slot:text>
+      <!--!template #text-->
       <v-row class="mx-5 mt-4">
         <v-col cols="12">
           <v-text-field
             autofocus
             label="Username"
             prepend-inner-icon="mdi-account"
+            v-model="form.username"
           >
           </v-text-field>
         </v-col>
@@ -40,20 +57,37 @@ onMounted(() => {});
           <v-text-field
             label="Password"
             prepend-inner-icon="mdi-lock"
-
+            :type="showPassword ? 'text' : 'password'"
+            v-model="form.password"
           >
-        <template #append-inner>
-          <v-icon v-model="showPassword"
-          :icon="showPassword:">mdi-eye</v-icon>
-        </template></v-text-field>
-          <div class="d-flex flex-row justify-end">
-            <a class="text-body-2" @click="gotoRegister"
-              >I don't have an account.</a
-            >
+            <template #append-inner>
+              <v-icon @click="changePasswordState">{{
+                showPassword ? "mdi-eye-off" : "mdi-eye"
+              }}</v-icon>
+            </template></v-text-field
+          >
+        </v-col>
+        <v-col>
+          <div class="d-flex flex-row">
+            <v-hover v-slot="{ isHovering, props }">
+              <v-icon>{{
+                isHovering ? "mdi-check-circle" : "mdi-circle-outline"
+              }}</v-icon>
+              <a
+                v-bind="props"
+                class="text-body-1 cursor-pointer"
+                @click="gotoRegister"
+                >I don't have an account.</a
+              >
+            </v-hover>
           </div>
         </v-col>
+
         <v-col cols="12">
-          <v-btn class="border rounded-lg my-8" base-color="#000000" block
+          <v-btn
+            class="border rounded-lg my-8 bg-info pa-5"
+            @click="submit"
+            block
             >Get Started</v-btn
           >
         </v-col>

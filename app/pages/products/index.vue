@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  const app=useApp()
 const router = useRouter();
 const baseUrl = "https://fakestoreapi.com/products";
 const tbHeaders = [
