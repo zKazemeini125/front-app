@@ -1,9 +1,7 @@
----
-
-## اسکلت README فارسی (README.fa.md)
-
 ````md
 # فروشگاه نمونه با Nuxt (پنل ادمین)
+[![en](https://img.shields.io/badge/lang-fa-red.svg)](https://github.com/zKazemeini125/front-app/blob/main/README.md)
+
 
 این پروژه یک فروشگاه نمونه با تمرکز بر **پنل ادمین** است که با استفاده از Nuxt 3، Vuetify و TypeScript توسعه داده شده است.
 
