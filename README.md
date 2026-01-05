@@ -1,53 +1,49 @@
-# Nuxt Sample Store (Admin Panel)
-[![fa](https://img.shields.io/badge/lang-fa-red.svg)](https://github.com/zKazemeini125/front-app/blob/main/README.fa.md)
+````md
+# فروشگاه نمونه با Nuxt (پنل ادمین)
+[![en](https://img.shields.io/badge/lang-fa-red.svg)](https://github.com/zKazemeini125/front-app/blob/main/README.md)
 
-This project is a sample e-commerce admin panel built with **Nuxt 3**, **Vuetify**, and **TypeScript**.
 
-The main goal of this project is to demonstrate:
+این پروژه یک فروشگاه نمونه با تمرکز بر **پنل ادمین** است که با استفاده از Nuxt 3، Vuetify و TypeScript توسعه داده شده است.
 
-- Clean frontend architecture
-- Client-side authentication simulation
-- Session handling using cookies and localStorage
-- Route protection using Nuxt middleware
+هدف اصلی پروژه، تمرین و نمایش معماری صحیح فرانت‌اند بدون وابستگی به بک‌اند یا API واقعی است.
 
-> No backend or API is used in this project.
-> Authentication and data handling are intentionally simulated to focus on frontend architecture.
+## امکانات
 
-## Features
+- احراز هویت ادمین (شبیه‌سازی‌شده)
+- محافظت از مسیرها با middleware
+- مدیریت session با کوکی
+- ذخیره اطلاعات کاربر و تنظیمات رابط کاربری در localStorage
+- ساختار ماژولار با composableها
+- رابط کاربری مبتنی بر Vuetify
 
-- Admin authentication (simulated)
-- Protected routes with middleware
-- Session persistence using cookies
-- User data and preferences stored in localStorage
-- Modular composables (useSession, usePreferences)
-- Vuetify-based UI and layouts
-
-## Tech Stack
+## تکنولوژی‌ها
 
 - Nuxt 3
 - Vue 3
 - TypeScript
 - Vuetify
-- Vite
 
-## Project Structure
+## ساختار پروژه
 
-- `composables/` – Session and preferences logic
-- `middleware/` – Route protection
-- `layouts/` – Application layouts
-- `pages/` – Application pages
+- composables: مدیریت session و تنظیمات
+- middleware: کنترل دسترسی صفحات
+- layouts: چیدمان‌های اصلی برنامه
+- pages: صفحات اپلیکیشن
 
-## Why no backend?
+## چرا بک‌اند ندارد؟
 
-This project is designed to:
+این پروژه با هدف:
 
-- Practice frontend-only authentication patterns
-- Keep the UI and business logic independent from the backend
-- Allow easy integration with a real API in the future
+- تمرین معماری فرانت‌اند
+- شبیه‌سازی رفتار سیستم‌های واقعی
+- امکان اتصال آسان به API در آینده
 
-## Getting Started
+طراحی شده است.
+
+## اجرا
 
 ```bash
 npm install
 npm run dev
 ```
+````
