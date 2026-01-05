@@ -1,75 +1,52 @@
-# Nuxt Minimal Starter
+# Nuxt Sample Store (Admin Panel)
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This project is a sample e-commerce admin panel built with **Nuxt 3**, **Vuetify**, and **TypeScript**.
 
-## Setup
+The main goal of this project is to demonstrate:
 
-Make sure to install dependencies:
+- Clean frontend architecture
+- Client-side authentication simulation
+- Session handling using cookies and localStorage
+- Route protection using Nuxt middleware
+
+> No backend or API is used in this project.
+> Authentication and data handling are intentionally simulated to focus on frontend architecture.
+
+## Features
+
+- Admin authentication (simulated)
+- Protected routes with middleware
+- Session persistence using cookies
+- User data and preferences stored in localStorage
+- Modular composables (useSession, usePreferences)
+- Vuetify-based UI and layouts
+
+## Tech Stack
+
+- Nuxt 3
+- Vue 3
+- TypeScript
+- Vuetify
+- Vite
+
+## Project Structure
+
+- `composables/` – Session and preferences logic
+- `middleware/` – Route protection
+- `layouts/` – Application layouts
+- `pages/` – Application pages
+
+## Why no backend?
+
+This project is designed to:
+
+- Practice frontend-only authentication patterns
+- Keep the UI and business logic independent from the backend
+- Allow easy integration with a real API in the future
+
+## Getting Started
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
