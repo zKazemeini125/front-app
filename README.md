@@ -1,5 +1,5 @@
 # Nuxt Sample Store (Admin Panel)
-[![fr](https://img.shields.io/badge/lang-fr-red.svg)](https://github.com/zKazemeini125/front-app/blob/main/README.fa.md)
+[![fa](https://img.shields.io/badge/lang-fa-red.svg)](https://github.com/zKazemeini125/front-app/blob/main/README.fa.md)
 
 This project is a sample e-commerce admin panel built with **Nuxt 3**, **Vuetify**, and **TypeScript**.
 
