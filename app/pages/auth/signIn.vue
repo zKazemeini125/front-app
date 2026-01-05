@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
 import "~/data";
-import { loginUser, type CreateUserDto } from "~/data";
+import { loginUser, type CreateUserDto, setUserSession } from "~/data";
 definePageMeta({
   layout: "auth",
 });
@@ -16,10 +16,12 @@ const changePasswordState = () => {
 const form = reactive<CreateUserDto>({ username: "", password: "" });
 const submit = () => {
   const userLogedin = loginUser(form.username, form.password);
-  console.log('qqqqqqq');
-  
   if (userLogedin) {
     router.push({ name: "products" });
+    console.log(setUserSession(form.username));
+    console.log('cvgfhuio');
+    
+    
   }
 };
 onMounted(() => {});

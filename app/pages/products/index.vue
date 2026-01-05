@@ -14,7 +14,6 @@ const actions = [
     title: "delete",
     color: "#ff1122",
     click: (item) => {
-      console.log("delete");
     },
   },
   {

@@ -24,7 +24,6 @@ const submitForm = () => {
       email: form.email,
       password: form.password,
     });
-    console.log(res);
   } catch (e) {}
 };
 onMounted(() => {});

@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useTheme } from "vuetify";
 import { navigationItem } from "~/data";
+
+const { getUser } = useSession();
+const user = getUser();
 const router = useRouter();
 const theme = useTheme();
 const themeTitle = ref("light");
@@ -13,12 +16,14 @@ const changeTheme = () => {
     themeTitle.value = "light";
   }
 };
+
 </script>
 
 <template>
   <v-layout>
     <v-app>
       <v-navigation-drawer>
+        {{ user?.username }}
         <v-list>
           <template v-for="(item, index) in navigationItem" :key="index">
             <v-list-item link :title="item.title">
@@ -28,7 +33,7 @@ const changeTheme = () => {
           ></template>
         </v-list>
       </v-navigation-drawer>
-      <v-app-bar density="compact" title="username">
+      <v-app-bar density="compact" :title="user?.username">
         <v-btn @click="changeTheme">{{ themeTitle }}</v-btn>
         <v-btn
           color="blue"
